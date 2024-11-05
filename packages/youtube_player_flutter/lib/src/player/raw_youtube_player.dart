@@ -276,10 +276,9 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
                     events: {
                         onReady: function(event) { 
                           //hide top title div
-                          for (let element of document.getElementsByClassName("ytp-chrome-top"))
-                          {
-                            element.style.display="none";
-                            }
+                          for (let element of document.getElementsByClassName("ytp-chrome-top")) {
+                            element.style.setProperty('display', 'none', 'important');
+                          }
                           Ready.postMessage("Ready"); },
                         onStateChange: function(event) { sendPlayerStateChange(event.data); },
                         onPlaybackQualityChange: function(event) { window.flutter_inappwebview.callHandler('PlaybackQualityChange', event.data); },
@@ -322,9 +321,8 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
             function pause() {
                 player.pauseVideo();
                 //hide pause overlay(more video overlay) 
-                for (let element of document.getElementsByClassName("ytp-pause-overlay"))
-                {
-                  element.style.display="none";
+                for (let element of document.getElementsByClassName("ytp-pause-overlay")) {
+                  element.style.setProperty('display', 'none', 'important');
                 }
                 return '';
             }
